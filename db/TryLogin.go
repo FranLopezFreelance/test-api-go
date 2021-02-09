@@ -5,7 +5,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-//TryLogin intenta loguear un usuario
+// TryLogin intenta loguear un usuario
 func TryLogin(email string, password string) (models.User, bool) {
 	user, found, _ := UserExist(email)
 	if found == false {

@@ -6,7 +6,7 @@ import (
 	"github.com/FranLopezFreelance/routes"
 )
 
-//JWTValidate valida el token de los request
+// JWTValidate valida el token de los request
 func JWTValidate(next http.HandlerFunc) http.HandlerFunc {
 	return func (w http.ResponseWriter, r *http.Request) {
 		_, _, _, err := routes.CheckToken(r.Header.Get("Authorization"))

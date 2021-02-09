@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-//SearchProfile busca y devuelve un perfil de usuario
+// SearchProfile busca y devuelve un perfil de usuario
 func SearchProfile(id string) (models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 

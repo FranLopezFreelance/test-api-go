@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-//UserExist checkea si el usuario existe
+// UserExist checkea si el usuario existe
 func UserExist(email string) (models.User, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	

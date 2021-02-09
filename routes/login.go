@@ -19,26 +19,26 @@ func Login(w http.ResponseWriter, r *http.Request){
 	err := json.NewDecoder(r.Body).Decode(&user)
 
 	if err != nil {
-		http.Error(w, "usuario y/o contraseña no son válidos", 400)
+		http.Error(w, "Usuario y/o contraseña no son válidos.", 400)
 		return
 	}
 
 	if len(user.Email) == 0 {
-		http.Error(w, "el email es requerido", 400)
+		http.Error(w, "El email es requerido.", 400)
 		return
 	}
 
 	document, found := db.TryLogin(user.Email, user.Password)
 
 	if found == false {
-		http.Error(w, "usuario y/o contraseña no son válidos", 400)
+		http.Error(w, "Usuario y/o contraseña no son válidos.", 400)
 		return
 	}
 
 	token, err := jwt.Generate(document)
 
 	if err != nil {
-		http.Error(w, "ha ocurrido un error: "+err.Error(), 500)
+		http.Error(w, "Ha ocurrido un error: "+err.Error(), 500)
 		return
 	}
 

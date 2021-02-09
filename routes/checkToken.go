@@ -9,13 +9,13 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-//UserID es el id del usuario logueado
+// UserID es el id del usuario logueado
 var UserID string
 
-//Email es el email del usuario logueado
+// Email es el email del usuario logueado
 var Email string
 
-//CheckToken se encarga de validar el token
+// CheckToken se encarga de validar el token
 func CheckToken(bearerToken string) (*models.Claims, bool, string, error) {
 	privateKey := [] byte ("@API-test-go-private-key-@FJL")
 	claims := &models.Claims{}

@@ -28,7 +28,7 @@ func Connect() *mongo.Client {
 	return mongoClient
 }
 
-//CheckConnection checkea que la conxión a la base de datos sea correcta
+// CheckConnection checkea que la conxión a la base de datos sea correcta
 func CheckConnection() bool {
 	err := MongoClient.Ping(context.TODO(), nil)
 	if err != nil {

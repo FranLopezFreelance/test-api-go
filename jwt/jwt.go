@@ -7,7 +7,7 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-//Generate genera un token para login
+// Generate genera un token para login
 func Generate(user models.User) (string, error) {
 
 	privateKey := [] byte ("@API-test-go-private-key-@FJL")

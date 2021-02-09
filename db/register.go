@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-//Register Registra un usuario
+// Register Registra un usuario
 func Register(user models.User) (string, bool, error){
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	
@@ -16,8 +16,11 @@ func Register(user models.User) (string, bool, error){
 
 	db := MongoClient.Database("test-api-go")
 	col := db.Collection("users")
+
 	user.Password, _ = PasswordEncrypt(user.Password)
+
 	result, err := col.InsertOne(ctx, user)
+
 	if err != nil {
 		return "", false, err
 	}
