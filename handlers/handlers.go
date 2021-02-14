@@ -42,6 +42,32 @@ func RouterHandlers(){
 			middlewares.JWTValidate(routes.NewTweet),
 		),
 	).Methods("POST")
+
+	router.HandleFunc("/api/getTweets", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.GetTweets),
+		),
+	).Methods("GET")
+
+	router.HandleFunc("/api/uploadAvatar", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.UploadAvatar),
+		),
+	).Methods("POST")
+
+	router.HandleFunc("/api/uploadBanner", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.UploadBanner),
+		),
+	).Methods("POST")
+
+	router.HandleFunc("/api/getAvatar", 
+		middlewares.CheckDB(routes.GetAvatar),
+	).Methods("GET")
+
+	router.HandleFunc("/api/getBanner", 
+		middlewares.CheckDB(routes.GetBanner),
+	).Methods("GET")
 	
 	// LISTEN AND SERVE
 	PORT := os.Getenv("PORT")

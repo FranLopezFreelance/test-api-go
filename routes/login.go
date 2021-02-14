@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request){
 	document, found := db.TryLogin(user.Email, user.Password)
 
 	if found == false {
-		http.Error(w, "Usuario y/o contraseña no son válidos.", 400)
+		http.Error(w, "Usuario y/o contraseña no son válidos.", 401)
 		return
 	}
 

@@ -39,7 +39,7 @@ func UpdateProfile(user models.User, id string) (bool, error){
 	}
 
 	if len(user.WebSite) > 0 {
-		newData["avatar"] = user.WebSite
+		newData["webSite"] = user.WebSite
 	}
 
 	if len(user.Avatar) > 0 {
@@ -47,7 +47,7 @@ func UpdateProfile(user models.User, id string) (bool, error){
 	}
 
 	if len(user.Banner) > 0 {
-		newData["avatar"] = user.Banner
+		newData["banner"] = user.Banner
 	}
 
 	updateData := bson.M{
