@@ -21,7 +21,7 @@ func RouterHandlers(){
 		middlewares.CheckDB(routes.Register),
 	).Methods("POST")
 
-	router.HandleFunc("/api/auth/login", 
+	router.HandleFunc("/api/auth/login", 	
 		middlewares.CheckDB(routes.Login),
 	).Methods("POST")
 
@@ -67,6 +67,24 @@ func RouterHandlers(){
 
 	router.HandleFunc("/api/getBanner", 
 		middlewares.CheckDB(routes.GetBanner),
+	).Methods("GET")
+
+	router.HandleFunc("/api/follow", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.CreateRelation),
+		),
+	).Methods("POST")
+
+	router.HandleFunc("/api/unfollow", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.DeleteRelation),
+		),
+	).Methods("DELETE")
+
+	router.HandleFunc("/api/getRelation", 
+		middlewares.CheckDB(
+			middlewares.JWTValidate(routes.GetRelation),
+		),
 	).Methods("GET")
 	
 	// LISTEN AND SERVE
